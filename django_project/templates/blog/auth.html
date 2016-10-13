@@ -1,0 +1,20 @@
+{% extends 'blog/layout.html' %}
+
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+        <strong>Usuário {{request.user}} autenticado com sucesso!</strong>
+    {% else %}
+        {% if error %}
+            <strong class="alert alert-danger" style="display: block">Erro de Autenticação!!!</strong>
+        {% endif %}
+        <form action="{% url 'blog.auth' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" /><br />
+            <input type="password" name="password" /><br />
+            <input type="submit" value="GO" />
+        </form>
+    {% endif %}
+{% endblock %}

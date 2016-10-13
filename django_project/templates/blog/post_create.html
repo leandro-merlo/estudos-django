@@ -1,0 +1,21 @@
+{% extends 'blog/layout.html' %}
+
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+
+<h3>Create a new Post</h3>
+<form action="#" method="post">
+
+
+{% csrf_token %}
+{% for field in form %}
+    <div class="form-group">
+        {{field.label_tag}} {{ field }}
+    </div>
+{% endfor %}
+<input type="submit" value="Create" class="btn btn-primary pull-right">
+
+</form>
+
+{% endblock %}
