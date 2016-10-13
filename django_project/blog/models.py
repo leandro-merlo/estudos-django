@@ -1,8 +1,17 @@
 from enum import unique
 
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, unique=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    city = models.CharField(max_length=255, null=True, blank=True)
+    state = models.CharField(max_length=255, null=True, blank=True)
+    country = models.CharField(max_length=255, null=True, blank=True)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)

@@ -3,9 +3,11 @@
 {% block title %} Blog {% endblock %}
 
 {% block content %}
+{% for post in posts %}
 <article>
     <h2>{{ post.name }}<small> ( {{ post.category.name }} )</small></h2>
     <p>{{ post.content }}</p>
 </article>
+{% endfor %}
 <hr />
 {% endblock %}
